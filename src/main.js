@@ -4,6 +4,7 @@ import router from './router';
 
 import './assets/scss/global.scss';
 import './assets/scss/base.scss'
+import './assets/scss/iconfont.scss'
 
 new Vue({
     el: '#app',

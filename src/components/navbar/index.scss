@@ -8,5 +8,13 @@
         flex: 1;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        .iconfont {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+        span {
+            font-size: 13px;
+        }
     }
 }

@@ -3,7 +3,7 @@ import App from './app'; // ES6 语法，相当于 import { default as App } fro
 import router from './router';
 
 import './assets/scss/global.scss';
-// import './assets/scss/index.scss'
+import './assets/scss/base.scss'
 
 new Vue({
     el: '#app',

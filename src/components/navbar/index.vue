@@ -1,6 +1,6 @@
 <template>
   <div class="g-tabbar">
-    <router-link class="g-tabbar-item" to="/home">
+    <router-link class="g-tabbar-item"  to="/home">
       <i class="iconfont icon-home"></i>
       <span>首页</span>
     </router-link>
@@ -21,14 +21,23 @@
 
 <script>
 export default {
-    name: 'CTabbar'
+    name: 'CTabbar',
+    data () {
+      return {
+        isactive: false
+      }
+    },
+    methods: {
+      toHome () {
+        this.isactive = true
+      }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
-// @import "~assets/scss/mixins";
-
-// .router-link-active {
-//   color: $link-active-color;
-// }
+@import "index.scss";
+.router-link-active {
+  color: red;
+}
 </style>

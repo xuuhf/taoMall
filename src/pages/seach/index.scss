@@ -1,0 +1,39 @@
+.seach {
+    width: 100%;
+    .s-header {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        font-size: 13px;
+        display: flex;
+        .h-left {
+            width: 20%;
+            height: 100%;
+            background-color: aqua;
+        }
+        .h-center {
+            width: 60%;
+            height: 100%;
+            background-color:pink;
+            .h-input {
+                width: 84%;
+                height: 30px;
+                border-radius: 40px;
+                margin-left: 8%;
+                position: relative;
+                text-indent: 8px;
+            }
+            .iconfont {
+                position: absolute;
+                top: 0;
+                left: 67%;
+                font-size: 20px;
+            }
+        }
+        .h-right {
+            width: 20%;
+            height: 100%;
+            background-color:bisque;
+        }
+    }
+}

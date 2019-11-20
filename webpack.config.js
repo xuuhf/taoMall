@@ -47,6 +47,10 @@ const config = {
                 }]
             },
             {
+                test:/\.(ttf|eot|woff|woff2|svg)$/,
+                use:['file-loader']
+            },
+            {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/, // 不处理这两个文件夹里的内容
                 loader: 'babel-loader'

@@ -13,6 +13,7 @@
 
 <script>
 import comHeader from '../../components/comHeader'
+import axios from 'axios'
 export default {
     name: 'seach',
     components: {
@@ -25,7 +26,12 @@ export default {
     },
     methods: {
         toseach () {
-            console.log('toseach')
+            axios.get('/data').then(res => {
+                console.log(res)
+            })
+            .catch(error => {
+            
+            })
         }
     }
 }

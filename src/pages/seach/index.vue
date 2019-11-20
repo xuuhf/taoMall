@@ -27,7 +27,7 @@ export default {
     methods: {
         toseach () {
             axios.get('/data').then(res => {
-                console.log(res)
+                console.log(res.data)
             })
             .catch(error => {
             

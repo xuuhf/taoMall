@@ -1,5 +1,5 @@
-import Vue from 'vue'; // 从node_modules引入vue类库
-import App from './app'; // ES6 语法，相当于 import { default as App } from './app.vue'。因为app.vue用过的是export default {...}，所以可以这样写
+import Vue from 'vue'; 
+import App from './app'; 
 import router from './router';
 
 import './assets/scss/global.scss';

@@ -2,7 +2,7 @@
 import Mock from 'mockjs'
 //使用mockjs模拟数据
 Mock.mock('/data', {
-    "ret":0,
+    "code":'000',
     "data":
       {
         "mtime": "@datetime",//随机生成日期时间

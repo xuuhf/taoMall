@@ -29,6 +29,13 @@ const config = {
          */
         filename: isDev ? 'bundle.[hash:8].js' : '[name].[chunkhash:8].js',
     },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+          'vue$': 'vue/dist/vue.esm.js',
+          '@': resolve('src')
+        }
+    },
     module: {
         rules: [{
                 // 使用vue-loader解析.vue文件

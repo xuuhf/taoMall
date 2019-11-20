@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import header from '../../components/header'
+import comHeader from '../../components/comHeader'
 export default {
     name: 'seach',
     components: {
-        header
+        comHeader
     },
     data() {
         return {

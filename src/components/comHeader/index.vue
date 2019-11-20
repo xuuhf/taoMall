@@ -1,5 +1,5 @@
 <template>
-    <div class="c_header">
+    <div class="comHeader">
         <slot name="left"></slot>
         <slot name="center"></slot>
         <slot name="right"></slot>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-    name: 'header'
+    name: 'comHeader'
 }
 </script>
 

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import home from '../pages/home';
+// import home from '../pages/home';
 import category from '../pages/category';
 import cart from '../pages/cart';
 import personal from '../pages/personal';
@@ -11,19 +11,22 @@ const router = new Router({
   routes: [{
       path: '/home',
       name: 'home',
-      component: home
+      component: () => import('../pages/home')
     },{
       path: '/category',
       name: 'category',
-      component: category
+      component: () => import('../pages/category')
     },{
       path: '/cart',
       name: 'cart',
-      component: cart
+      component: () => import('../pages/cart')
     },{
       path: '/personal',
       name: 'personal',
-      component: personal
+      component: () => import('../pages/personal')
+    },{
+      path: '*',
+      redirect: '/home'
     }
   ]
 });

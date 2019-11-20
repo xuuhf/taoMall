@@ -11,9 +11,11 @@
   "author": "dandelion-drq<dandelion.drq@gmail.com>(https://dandelion-drq.github.io/)",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "autoprefixer": "^9.1.3",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^0.1.19",
     "cross-env": "^5.2.0",

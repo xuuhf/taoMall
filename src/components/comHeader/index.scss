@@ -1,0 +1,20 @@
+.comHeader {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    .common {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .com-left {
+        margin-left: 10px;
+    }
+    .com-right{
+        margin-right: 10px;
+    }
+    .com-center{
+        flex: 1;
+        margin: 0 10px;
+    }
+}

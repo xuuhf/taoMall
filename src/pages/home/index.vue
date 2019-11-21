@@ -1,15 +1,19 @@
 <template>
   <div class="home">
-    <seach />
+    <header class="header-container">
+      <home-header/>
+    </header>
+    <div class="home-content"></div>
+    <div class="backtop-container"></div>
   </div>
 </template>
 
 <script>
-import seach from '../seach/index'
+import homeHeader from './header'
 export default {
     name: 'home',
     components: {
-      seach
+      homeHeader
     },
     data() {
         return {
@@ -18,3 +22,22 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+.home {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  .header-container {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+  }
+  .home-content {
+    width: 100%;
+    height: 100%;
+    background-color: aquamarine;
+    margin-top: -40px;
+  }
+}
+</style>

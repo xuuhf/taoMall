@@ -10,7 +10,7 @@ export default {
     name: 'cart',
     data() {
         return {
-          msg: 'cart'
+           msg: 'cart'
         }
     }
 }

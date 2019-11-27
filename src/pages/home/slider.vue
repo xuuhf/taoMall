@@ -19,7 +19,6 @@
 <script>
 import meSlider from '../../components/meSlider'
 import {swiperSlide} from 'vue-awesome-swiper'
-// import {sliderOptions} from './config'
 export default {
     name: 'homeSlider',
     components: {
@@ -71,6 +70,5 @@ export default {
   .slider-img {
     overflow: hidden;
     width: 100%;
-    height: 100%;
   }
 </style>

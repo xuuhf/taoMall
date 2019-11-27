@@ -4,7 +4,8 @@
       <home-header/>
     </header>
     <div class="home-content">
-        <home-slider/>
+        <home-slider class="home-slider"/>
+        <home-nav class="home-nav"/>
     </div>
     <div class="backtop-container"></div>
   </div>
@@ -13,11 +14,13 @@
 <script>
 import homeHeader from './header'
 import homeSlider from './slider'
+import homeNav from './nav'
 export default {
     name: 'home',
     components: {
       homeHeader,
-      homeSlider
+      homeSlider,
+      homeNav
     },
     data() {
         return {
@@ -35,13 +38,18 @@ export default {
     width: 100%;
     height: 40px;
     line-height: 40px;
-    background-color: #fff;
   }
   .home-content {
-    width: 100%;
-    height: 150px;
-    background-color: aquamarine;
-    margin-top: -40px;
+      width: 100%;
+      height: 100%;
+        .home-slider {
+            width: 100%;
+            margin-top: -40px;
+        }
+        .home-nav {
+            width: 100%;
+            background-color: palegoldenrod;
+        }
   }
 }
 </style>

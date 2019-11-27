@@ -2,6 +2,7 @@
     display: flex;
     width: 100%;
     height: 100%;
+    position: relative;
     .common {
         display: flex;
         justify-content: space-between;
@@ -16,5 +17,24 @@
     .com-center{
         flex: 1;
         margin: 0 10px;
+    }
+    .com-title {
+        position: absolute;
+        left: 0;
+        top: 0;
+        left: 20%;
+        right: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        .title-content {
+            width: 100%;
+            font-size: 18px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            // line-height: 1.5;
+        }
     }
 }

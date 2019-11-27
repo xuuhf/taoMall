@@ -9,12 +9,21 @@
         <div class="com-right common" v-if="$slots.right">
             <slot name="right"></slot>
         </div>
+        <h1 class="com-title" v-if="title" >
+            <span class="title-content" v-text="title"></span>
+        </h1>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'comHeader'
+    name: 'comHeader',
+    props: {
+        title: {
+            type: String,
+            default: ''
+        }
+    }
 }
 </script>
 

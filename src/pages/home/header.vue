@@ -1,6 +1,6 @@
 <template>
   <div class="homeHeader">
-    <com-header>
+    <com-header class="header" title="">
         <i class="iconfont iconscan" slot="left"/>
         <div class="header-center" slot="center">
             <input class="h-input"  value="111"/>
@@ -30,7 +30,7 @@ export default {
                 console.log(res.data)
             })
             .catch(error => {
-            
+
             })
         }
     }

@@ -3,6 +3,7 @@
     width: 100%;
     height: 100%;
     position: relative;
+    z-index: 1000;
     .common {
         display: flex;
         justify-content: space-between;

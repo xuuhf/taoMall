@@ -39,8 +39,8 @@ export default {
   }
   .home-content {
     width: 100%;
-    height: 100%;
-    // background-color: aquamarine;
+    height: 150px;
+    background-color: aquamarine;
     margin-top: -40px;
   }
 }

@@ -2,6 +2,8 @@ import Vue from 'vue';
 import App from './app';
 import router from './router';
 import fastclick from 'fastclick'
+import 'swiper/dist/css/swiper.css'
+
 
 import './assets/scss/global.scss';
 import './assets/scss/base.scss'

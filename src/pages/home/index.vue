@@ -3,17 +3,21 @@
     <header class="header-container">
       <home-header/>
     </header>
-    <div class="home-content"></div>
+    <div class="home-content">
+        <home-slider/>
+    </div>
     <div class="backtop-container"></div>
   </div>
 </template>
 
 <script>
 import homeHeader from './header'
+import homeSlider from './slider'
 export default {
     name: 'home',
     components: {
-      homeHeader
+      homeHeader,
+      homeSlider
     },
     data() {
         return {
@@ -36,7 +40,7 @@ export default {
   .home-content {
     width: 100%;
     height: 100%;
-    background-color: aquamarine;
+    // background-color: aquamarine;
     margin-top: -40px;
   }
 }

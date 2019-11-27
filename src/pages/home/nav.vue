@@ -87,7 +87,7 @@ export default {
                 margin-bottom: 15px;
                 .nav-link {
                     display: flex;
-                    justify-content: center;
+                    justify-content: space-around;
                     align-items: center;
                     flex-direction: column;
                     .nav-pic {

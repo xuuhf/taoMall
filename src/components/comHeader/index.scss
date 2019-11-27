@@ -1,3 +1,4 @@
+@import "../../assets/scss/mixin";
 .comHeader {
     display: flex;
     width: 100%;
@@ -8,6 +9,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        // @include flex-between
     }
     .com-left {
         margin-left: 10px;

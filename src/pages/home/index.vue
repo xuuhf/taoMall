@@ -3,10 +3,11 @@
     <header class="header-container">
       <home-header/>
     </header>
-    <div class="home-content">
+    <me-scroll class="mescroll">
         <home-slider class="home-slider"/>
         <home-nav class="home-nav"/>
-    </div>
+        <home-recommend class="home-recommend"></home-recommend>
+    </me-scroll>
     <div class="backtop-container"></div>
   </div>
 </template>
@@ -15,12 +16,16 @@
 import homeHeader from './header'
 import homeSlider from './slider'
 import homeNav from './nav'
+import homeRecommend from './recommend'
+import MeScroll from '../../components/scroll'
 export default {
     name: 'home',
     components: {
       homeHeader,
       homeSlider,
-      homeNav
+      homeNav,
+      homeRecommend,
+      MeScroll
     },
     data() {
         return {
@@ -48,7 +53,7 @@ export default {
         }
         .home-nav {
             width: 100%;
-            background-color: palegoldenrod;
+            background-color: #fff;
         }
   }
 }

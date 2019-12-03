@@ -3,7 +3,7 @@
     <header class="header-container">
       <home-header/>
     </header>
-    <me-scroll class="mescroll">
+    <me-scroll class="home-content">
         <home-slider class="home-slider"/>
         <home-nav class="home-nav"/>
         <home-recommend class="home-recommend"></home-recommend>
@@ -39,22 +39,25 @@ export default {
   overflow: hidden;
   width: 100%;
   height: 100%;
+  position: relative;
   .header-container {
+    position: absolute;
     width: 100%;
     height: 40px;
     line-height: 40px;
   }
-  .home-content {
-      width: 100%;
-      height: 100%;
-        .home-slider {
-            width: 100%;
-            margin-top: -40px;
-        }
-        .home-nav {
-            width: 100%;
-            background-color: #fff;
-        }
-  }
+//   .home-content {
+//       width: 100%;
+//       height: 100%;
+//         .home-slider {
+//             width: 100%;
+//             margin-top: -40px;
+//             height: 180px;
+//         }
+//         .home-nav {
+//             width: 100%;
+//             background-color: #fff;
+//         }
+//   }
 }
 </style>

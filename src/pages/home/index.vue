@@ -51,18 +51,5 @@ export default {
       height: 100%;
       width: 100%;
   }
-//   .home-content {
-//       width: 100%;
-//       height: 100%;
-//         .home-slider {
-//             width: 100%;
-//             margin-top: -40px;
-//             height: 180px;
-//         }
-//         .home-nav {
-//             width: 100%;
-//             background-color: #fff;
-//         }
-//   }
 }
 </style>

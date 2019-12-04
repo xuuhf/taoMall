@@ -23,8 +23,8 @@ export default {
                 freeMode: true,
                 scrollbar: {
                     el: '.swiper-scrollbar'
-                },
-                mousewheel: true
+                }
+                // mousewheel: true
             }
         }
     }

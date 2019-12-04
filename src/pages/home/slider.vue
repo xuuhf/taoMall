@@ -39,8 +39,7 @@ export default {
             swiperOption: {
                 direction: 'horizontal', // horizontal:水平 vertical:垂直
                 pagination: true, // 是否需要分页器
-                //循环
-                loop:true,
+                loop: true, // 循环
                 interval: 0, // 自动播放时间间隔，为0则不自动播放
             },
             sliders: [

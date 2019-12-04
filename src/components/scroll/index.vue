@@ -1,5 +1,5 @@
 <template>
-    <swiper :options="swiperOption">
+    <swiper :options="swiperOption" ref="swiper">
         <swiper-slide class="text">
             <slot></slot>
         </swiper-slide>
@@ -15,6 +15,9 @@ export default {
         swiper,
         swiperSlide
     },
+    props: {
+        data: [Array, Object]
+    },
     data () {
         return {
             swiperOption: {
@@ -26,6 +29,16 @@ export default {
                 }
                 // mousewheel: true
             }
+        }
+    },
+    watch: {
+        data() {
+            this.update()
+        }
+    },
+    methods: {
+        update() {
+            this.$refs.swiper && this.$refs.swiper.swiper.update()
         }
     }
 }

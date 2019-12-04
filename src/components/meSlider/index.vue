@@ -74,7 +74,8 @@ export default {
                 slidesPerView: 1,
                 loop: this.data.length <= 1 ? false : this.loop,
                 pagination: {
-                    el: this.pagination ? '.swiper-pagination' : null
+                    el: this.pagination ? '.swiper-pagination' : null,
+                    clickable: true
                 }
             }
         }

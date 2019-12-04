@@ -55,7 +55,7 @@ export default {
                         this.curPage++
                         this.totalPage = data.totalPage
                         this.recommends = this.recommends.concat(data.itemList)
-                        // this.$emit('loaded', this.recommends);
+                        this.$emit('loaded', this.recommends);
                         // resolve();
                     }
                 })

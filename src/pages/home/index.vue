@@ -3,10 +3,13 @@
     <header class="header-container">
       <home-header/>
     </header>
-    <me-scroll class="home-container">
+    <me-scroll
+        class="home-container"
+        :data="recommends"
+    >
         <home-slider class="home-slider"/>
         <home-nav class="home-nav"/>
-        <home-recommend class="home-recommend"></home-recommend>
+        <home-recommend class="home-recommend" @loaded="getRecommends"/>
     </me-scroll>
     <div class="backtop-container"></div>
   </div>
@@ -29,7 +32,12 @@ export default {
     },
     data() {
         return {
-          msg: '111111'
+            recommends: []
+        }
+    },
+    methods: {
+        getRecommends (recommends) {
+            this.recommends = recommends
         }
     }
 }

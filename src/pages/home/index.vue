@@ -3,7 +3,7 @@
     <header class="header-container">
       <home-header/>
     </header>
-    <me-scroll class="home-content">
+    <me-scroll>
         <home-slider class="home-slider"/>
         <home-nav class="home-nav"/>
         <home-recommend class="home-recommend"></home-recommend>

@@ -1,18 +1,10 @@
 <template>
-    <div class="MeScroll">
-        <swiper :options="swiperOption" ref="swiper">
-            <div class="pullDown">
-                <!-- 下拉 -->
-            </div>
-            <swiper-slide>
-                <slot></slot>
-            </swiper-slide>
-            <div class="pullUp">
-                <!-- 上拉 -->
-            </div>
-            <div class="swiper-scrollbar" v-if="scrollbar" slot="scrollbar"></div>
-        </swiper>
-    </div>
+    <swiper :options="swiperOption" ref="swiper">
+        <swiper-slide>
+            <slot></slot>
+        </swiper-slide>
+        <div class="swiper-scrollbar" v-if="scrollbar" slot="scrollbar"></div>
+    </swiper>
 </template>
 
 <script>
@@ -36,18 +28,68 @@ export default {
       swiperSlide,
     },
     props: {
-        scrollbar: {}
+        scrollbar: {
+            type: Boolean,
+            default: true
+        },
     },
-    data () {
-        return {
-            swiperOption: {
-
-            }
+    data() {
+      return { // 下拉参数设置
+        pulling: false,
+        pullDownText: PULL_DOWN_TEXT_INIT,
+        pullUpText: PULL_DOWN_TEXT_INIT,//没有
+        swiperOption: {
+          direction: 'vertical',
+          slidesPerView: 'auto',
+          freeMode: true,
+          setWrapperSize: true,
+          scrollbar: {
+            el: this.scrollbar ? '.swiper-scrollbar' : null,
+            hide: true
+          },
+          on: {
+            sliderMove: this.scroll,
+            touchEnd: this.touchEnd,
+            // transitionEnd: this.scrollEnd
+          }
+        }
+      };
+    },
+    created () {
+        // this.init()
+    },
+    methods: {
+        init () {
+            this.pulling = false;
+            this.pullDownText = PULL_DOWN_TEXT_INIT;
+            this.pullUpText = PULL_DOWN_TEXT_INIT;// 没有
+            this.swiperOption = {
+                direction: 'vertical',
+                slidesPerView: 'auto',
+                freeMode: true,
+                setWrapperSize: true,
+                scrollbar: {
+                    el: this.scrollbar ? '.swiper-scrollbar' : null,
+                    hide: true
+                },
+                on: {
+                    sliderMove: this.scroll,
+                    touchEnd: this.touchEnd,
+                    transitionEnd: this.scrollEnd // 向上滑动时监听scrollEnd
+                }
+            };
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.swiper-container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    height: auto;
+}
 </style>

@@ -6,6 +6,7 @@
         :loop="swiperOption.loop"
         :autoplay="swiperOption.autoplay"
         :speed="swiperOption.speed"
+        :interval="swiperOption.interval"
         :data="sliders"
         v-else
         >

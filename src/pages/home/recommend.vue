@@ -2,10 +2,10 @@
     <div class="recommend">
         <h3 class="recommend-title">猜你喜欢</h3>
         <div class="recommend-content">
-            <ul>
+            <!-- <ul>
                 <li>
                     <router-link></router-link></li>
-            </ul>
+            </ul> -->
         </div>
     </div>
 </template>

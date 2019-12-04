@@ -3,7 +3,7 @@
     <header class="header-container">
       <home-header/>
     </header>
-    <me-scroll>
+    <me-scroll class="home-container">
         <home-slider class="home-slider"/>
         <home-nav class="home-nav"/>
         <home-recommend class="home-recommend"></home-recommend>
@@ -45,6 +45,11 @@ export default {
     width: 100%;
     height: 40px;
     line-height: 40px;
+  }
+  .home-container {
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
   }
 //   .home-content {
 //       width: 100%;

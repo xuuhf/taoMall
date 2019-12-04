@@ -25,7 +25,7 @@ export default {
         },
         interval: {
             type: Number,
-            default: 3000,
+            default: 0,
             validator(value) {
                 return value >= 0;
             }

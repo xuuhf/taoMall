@@ -56,12 +56,16 @@ export default {
             pulling: false,
             indicator: true,
             inline: true,
+            pullDownText: PULL_DOWN_TEXT_INIT,
+            pullUpText: PULL_DOWN_TEXT_INIT,
             swiperOption: {
                 direction: 'vertical',
                 slidesPerView: 'auto',
                 freeMode: true,
+                setWrapperSize: true,
                 scrollbar: {
-                    el: '.swiper-scrollbar'
+                    el: '.swiper-scrollbar',
+                    hide: true
                 },
                 on: {
                     sliderMove: this.scroll,

@@ -71,7 +71,6 @@ export default {
       getSliders() {
         return getHomeSlider().then(data => {
           this.sliders = data;
-          console.log(this.sliders)
         });
       }
     }

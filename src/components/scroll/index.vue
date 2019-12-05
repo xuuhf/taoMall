@@ -16,7 +16,9 @@ export default {
         swiperSlide
     },
     props: {
-        data: [Array, Object]
+        data: {
+            type: [Array, Object]
+        }
     },
     data () {
         return {

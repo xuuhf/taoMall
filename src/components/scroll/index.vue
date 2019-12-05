@@ -9,6 +9,12 @@
         <swiper-slide class="text">
             <slot></slot>
         </swiper-slide>
+        <div class="pull-up" v-if="pullUp">
+            <me-loading
+                :inline="inline"
+                ref="pullUpLoading"
+            />
+        </div>
         <div class="swiper-scrollbar" slot="scrollbar"></div>
       </swiper>
 </template>
@@ -20,7 +26,10 @@ import {PULL_DOWN_HEIGHT,
         PULL_DOWN_TEXT_INIT,
         PULL_DOWN_TEXT_START,
         PULL_DOWN_TEXT_ING,
-        PULL_DOWN_TEXT_END} from './config'
+        PULL_DOWN_TEXT_END,
+        PULL_UP_HEIGHT,
+        PULL_UP_TEXT_INIT,
+        PULL_UP_TEXT_START} from './config'
 export default {
     name: 'meScroll',
     components: {
@@ -33,6 +42,10 @@ export default {
             type: [Array, Object]
         },
         pullDown: {
+            type: Boolean,
+            default: true
+        },
+        pullUp: {
             type: Boolean,
             default: true
         }
@@ -49,7 +62,8 @@ export default {
                     el: '.swiper-scrollbar'
                 },
                 on: {
-                    touchMove: this.scroll
+                    touchMove: this.scroll,
+                    touchEnd: this.touchEnd
                 }
                 // mousewheel: true
             }
@@ -67,13 +81,7 @@ export default {
 
         scroll () {
             const swiper = this.$refs.swiper.swiper
-
-            // this.$emit('scroll', swiper.translate, this.$refs.swiper.swiper);
-
-            // if (this.pulling) {
-            //     return;
-            // }
-            if (swiper.translate) {
+            if (swiper.translate > 0) {
                 if(!this.pullDown) {
                     return
                 }
@@ -82,6 +90,24 @@ export default {
                 } else {
                     this.$refs.pullDownLoading.setText(PULL_DOWN_TEXT_INIT)
                 }
+            } else if (swiper.isEnd){
+                // 上拉
+                if (!this.pullUp) {
+                    return
+                }
+                const isPullUp = Math.abs(swiper.translate) + swiper.height - PULL_UP_HEIGHT > parseInt(swiper.$wrapperEl.css('height'))
+                if (isPullUp) {
+                    this.$refs.pullUpLoading.setText(PULL_UP_TEXT_INIT)
+                } else {
+                    this.$refs.pullUpLoading.setText(PULL_UP_TEXT_START)
+                }
+            }
+        },
+        touchEnd () {
+
+            const swiper = this.$refs.swiper.swiper
+            if (swiper.translate > PULL_DOWN_HEIGHT) { // 下拉
+
             }
         }
 
@@ -98,11 +124,18 @@ export default {
     .swiper-slide {
         height: auto;
     }
-    .pull-down {
+    .pull-down,
+    .pull-up {
         position: absolute;
         left: 0;
-        bottom: 100%;
         width: 100%;
+    }
+    .pull-down {
+        bottom: 100%;
         height: 80px;
+    }
+    .pull-up {
+        top: 100%;
+        height: 30px;
     }
 </style>

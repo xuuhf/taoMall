@@ -2,7 +2,7 @@
     <div class="recommend">
         <h3 class="recommend-title">猜你喜欢</h3>
         <div class="recommend-loading" v-if="!recommends.length">
-            <me-loading :indicator="indicator" :textLoad="textLoad" :inline="inline"/>
+            <me-loading :indicator="indicator" :inline="inline"/>
         </div>
         <ul class="recommend-content" v-else>
             <li class="recommend-item" v-for="(item, index) of recommends" :key="index">
@@ -31,7 +31,6 @@ export default {
     data () {
         return {
             indicator: true,
-            textLoad: '加载中..........',
             inline: false,
             recommends: [],
             curPage: 1,

@@ -7,6 +7,7 @@
         class="home-container"
         :data="recommends"
         pullDown
+        pullUp
     >
         <home-slider class="home-slider"/>
         <home-nav class="home-nav"/>

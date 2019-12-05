@@ -64,7 +64,7 @@ export default {
                     el: '.swiper-scrollbar'
                 },
                 on: {
-                    touchMove: this.scroll,
+                    sliderMove: this.scroll,
                     touchEnd: this.touchEnd
                 }
                 // mousewheel: true

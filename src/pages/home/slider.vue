@@ -1,6 +1,6 @@
 <template>
   <div class="homeHeader slider-wapper">
-      <me-loading v-if="!sliders.length" :indicator="indicator" :textLoad="textLoad" :inline="inline"/>
+      <me-loading v-if="!sliders.length" :indicator="indicator" :inline="inline"/>
       <me-slider
         :pagination="swiperOption.pagination"
         :loop="swiperOption.loop"
@@ -34,7 +34,6 @@ export default {
     data() {
         return {
             indicator: true,
-            textLoad: '加载中..........',
             inline: false,
             swiperOption: {
                 direction: 'horizontal', // horizontal:水平 vertical:垂直

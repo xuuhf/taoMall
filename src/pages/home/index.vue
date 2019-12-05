@@ -6,6 +6,7 @@
     <me-scroll
         class="home-container"
         :data="recommends"
+        pullDown
     >
         <home-slider class="home-slider"/>
         <home-nav class="home-nav"/>

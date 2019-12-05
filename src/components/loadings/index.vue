@@ -13,11 +13,11 @@ export default {
     props: {
         indicator: {
             type: Boolean,
-            default: false
+            default: true
         },
-        textLoad: {
+        text: {
             type: String,
-            default: ''
+            default: '加载中...'
         },
         inline: {
             type: Boolean,
@@ -26,6 +26,17 @@ export default {
     },
     data () {
         return {
+            textLoad: this.text
+        }
+    },
+    watch: {
+        text(text) {
+            this.textLoad = text
+        }
+    },
+    methods: {
+        setText(text) {
+            this.textLoad = text
         }
     }
 }

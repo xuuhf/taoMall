@@ -29,7 +29,8 @@ import {PULL_DOWN_HEIGHT,
         PULL_DOWN_TEXT_END,
         PULL_UP_HEIGHT,
         PULL_UP_TEXT_INIT,
-        PULL_UP_TEXT_START} from './config'
+        PULL_UP_TEXT_START,
+        PULL_UP_TEXT_ING} from './config'
 export default {
     name: 'meScroll',
     components: {
@@ -52,6 +53,7 @@ export default {
     },
     data () {
         return {
+            pulling: false,
             indicator: true,
             inline: true,
             swiperOption: {
@@ -107,9 +109,41 @@ export default {
 
             const swiper = this.$refs.swiper.swiper
             if (swiper.translate > PULL_DOWN_HEIGHT) { // 下拉
-
+                if(!this.pullDown) {
+                    return
+                }
+                this.pulling = true
+                swiper.allowTouchMove = false
+                swiper.setTransition(swiper.params.speed)
+                swiper.setTranslate(PULL_DOWN_HEIGHT)
+                swiper.params.virtualTranslate = true
+                this.$refs.pullDownLoading.setText(PULL_DOWN_TEXT_ING)
+                this.$emit('pull-down', this.pullDownEnd)
+            } else if(swiper.isEnd) { // 底部
+                const totalHeight = parseInt(swiper.$wrapperEl.css('height'))
+                const isPullUp = Math.abs(swiper.translate) + swiper.height - PULL_UP_HEIGHT > parseInt(swiper.$wrapperEl.css('height'))
+                if (isPullUp) {
+                    // 上拉
+                    if (!this.pullUp) {
+                        return
+                    }
+                    this.pulling = true
+                    swiper.allowTouchMove = false // 禁止触摸
+                    swiper.setTransition(swiper.params.speed)
+                    swiper.setTranslate(-(totalHeight + PULL_UP_HEIGHT - swiper.height))
+                    swiper.params.virtualTranslate = true // 不回弹
+                    this.$refs.pullUpLoading.setText(PULL_UP_TEXT_ING)
+                    this.$emit('pull-up', this.pullUpEnd)
+                }
             }
+        },
+        pullDownEnd () {
+
+        },
+        pullUpEnd () {
+
         }
+
 
     }
 }

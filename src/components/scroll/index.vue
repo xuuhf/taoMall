@@ -87,6 +87,9 @@ export default {
 
         scroll () {
             const swiper = this.$refs.swiper.swiper
+            if (this.fulling) {
+                return
+            }
             if (swiper.translate > 0) {
                 if(!this.pullDown) {
                     return
@@ -110,7 +113,9 @@ export default {
             }
         },
         touchEnd () {
-
+            if (this.fulling) {
+                return
+            }
             const swiper = this.$refs.swiper.swiper
             if (swiper.translate > PULL_DOWN_HEIGHT) { // 下拉
                 if(!this.pullDown) {
@@ -142,10 +147,25 @@ export default {
             }
         },
         pullDownEnd () {
-
+            const swiper = this.$refs.swiper.swiper
+            this.pulling = true
+            swiper.allowTouchMove = true
+            swiper.setTransition(swiper.params.speed)
+            swiper.setTranslate(PULL_DOWN_HEIGHT)
+            swiper.params.virtualTranslate = false
+            this.$refs.pullDownLoading.setText(PULL_DOWN_TEXT_END)
+            swiper.setTranslate(0)
+            setTimeout(() => {
+                this.$emit('pull-down-transition-end')
+            },swiper.params.speed)
         },
         pullUpEnd () {
-
+            const swiper = this.$refs.swiper.swiper
+            this.pulling = true
+            swiper.allowTouchMove = true // 禁止触摸
+            swiper.params.virtualTranslate = false // 不回弹
+            this.$refs.pullUpLoading.setText(PULL_UP_TEXT_END)
+            this.$emit('pull-up', this.pullUpEnd)
         }
 
 

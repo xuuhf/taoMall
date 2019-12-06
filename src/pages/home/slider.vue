@@ -63,12 +63,12 @@ export default {
     },
     methods: {
         update() {
-        return this.getSliders();
-      },
-      getSliders() {
-        return getHomeSlider().then(data => {
-          this.sliders = data;
-        });
+            return this.getSliders();
+        },
+        getSliders() {
+            return getHomeSlider().then(data => {
+                this.sliders = data;
+            });
       }
     }
 }

@@ -8,8 +8,10 @@
         :data="recommends"
         pullDown
         pullUp
+        @pull-down="pullToRefresh"
+        @pull-up="pullUpMore"
     >
-        <home-slider class="home-slider"/>
+        <home-slider class="home-slider" ref="slider"/>
         <home-nav class="home-nav"/>
         <home-recommend class="home-recommend" @loaded="getRecommends"/>
     </me-scroll>
@@ -40,6 +42,13 @@ export default {
     methods: {
         getRecommends (recommends) {
             this.recommends = recommends
+        },
+
+        pullToRefresh (end) {
+            this.$refs.slider.update().then(end)
+        },
+        pullUpMore () {
+
         }
     }
 }

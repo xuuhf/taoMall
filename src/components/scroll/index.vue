@@ -30,7 +30,8 @@ import {PULL_DOWN_HEIGHT,
         PULL_UP_HEIGHT,
         PULL_UP_TEXT_INIT,
         PULL_UP_TEXT_START,
-        PULL_UP_TEXT_ING} from './config'
+        PULL_UP_TEXT_ING,
+        PULL_UP_TEXT_END} from './config'
 export default {
     name: 'meScroll',
     components: {
@@ -53,12 +54,27 @@ export default {
     },
     data () {
         return {
-            pulling: false,
-            indicator: true,
-            inline: true,
-            pullDownText: PULL_DOWN_TEXT_INIT,
-            pullUpText: PULL_DOWN_TEXT_INIT,
-            swiperOption: {
+        }
+    },
+    watch: {
+        data() {
+            this.update()
+        }
+    },
+    created () {
+        this.init()
+    },
+    methods: {
+        update() {
+            this.$refs.swiper && this.$refs.swiper.swiper.update()
+        },
+        init () {
+            this.pulling = false,
+            this.indicator = true,
+            this.inline = true,
+            this.pullDownText = PULL_DOWN_TEXT_INIT,
+            this.pullUpText = PULL_DOWN_TEXT_INIT,
+            this.swiperOption = {
                 direction: 'vertical',
                 slidesPerView: 'auto',
                 freeMode: true,
@@ -73,18 +89,7 @@ export default {
                 }
                 // mousewheel: true
             }
-        }
-    },
-    watch: {
-        data() {
-            this.update()
-        }
-    },
-    methods: {
-        update() {
-            this.$refs.swiper && this.$refs.swiper.swiper.update()
         },
-
         scroll () {
             const swiper = this.$refs.swiper.swiper
             if (this.fulling) {

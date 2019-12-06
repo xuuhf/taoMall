@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <header class="header-container">
-      <home-header/>
+      <home-header :class="{HeaderTransition: isHeaderTransition}"  ref="header"/>
     </header>
     <me-scroll
         class="home-container"
@@ -10,6 +10,7 @@
         pullUp
         @pull-down="pullToRefresh"
         @pull-up="pullUpMore"
+        @scroll-end="scrollEnd"
     >
         <home-slider class="home-slider" ref="slider"/>
         <home-nav class="home-nav"/>
@@ -36,7 +37,8 @@ export default {
     },
     data() {
         return {
-            recommends: []
+            recommends: [],
+            isHeaderTransition: false
         }
     },
     methods: {
@@ -54,6 +56,22 @@ export default {
                 }
                 end()
             })
+        },
+        scrollEnd (translate, swiper, pulling) {
+            if(!pulling) {
+                this.changeHeadDisplay(translate)
+            }
+        },
+        changeHeadDisplay (translate) {
+            console.log(translate)
+            if(translate) {
+                // Header-transition
+                this.isHeaderTransition = true
+                console.log('222')
+            }
+            // this.$refs.header.show()
+                this.isHeaderTransition = false
+            // this.isHeaderTransition = -translate > HEADER_TRANSITION_HEIGHT
         }
     }
 }
@@ -74,6 +92,9 @@ export default {
       overflow: hidden;
       height: 100%;
       width: 100%;
+  }
+  .HeaderTransition {
+      display: none;
   }
 }
 </style>

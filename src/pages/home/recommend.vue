@@ -47,13 +47,13 @@ export default {
                 return Promise.reject(new Error('没有更多了'));
             }
             return getHomeRecommend(this.curPage).then(data => {
-                return new Promise(reslove => {
+                return new Promise(resolve => {
                     if(data) {
                         this.curPage++
                         this.totalPage = data.totalPage
                         this.recommends = this.recommends.concat(data.itemList)
                         this.$emit('loaded', this.recommends)
-                        resolve('success')
+                        resolve()
                     }
                 })
             })

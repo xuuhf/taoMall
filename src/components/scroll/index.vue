@@ -85,7 +85,8 @@ export default {
                 },
                 on: {
                     sliderMove: this.scroll,
-                    touchEnd: this.touchEnd
+                    touchEnd: this.touchEnd,
+                    transitionEnd: this.scrollEnd
                 }
                 // mousewheel: true
             }
@@ -150,6 +151,11 @@ export default {
                     this.$emit('pull-up', this.pullUpEnd)
                 }
             }
+        },
+        scrollEnd () {
+            const swiper = this.$refs.swiper.swiper
+            console.log(swiper.translate,'222222')
+            this.$emit('scroll-end', swiper.translate, swiper, this.pulling)
         },
         pullDownEnd () {
             const swiper = this.$refs.swiper.swiper

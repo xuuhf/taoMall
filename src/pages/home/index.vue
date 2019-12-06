@@ -13,7 +13,7 @@
     >
         <home-slider class="home-slider" ref="slider"/>
         <home-nav class="home-nav"/>
-        <home-recommend class="home-recommend" @loaded="getRecommends"/>
+        <home-recommend class="home-recommend" @loaded="getRecommends" ref="recommend"/>
     </me-scroll>
     <div class="backtop-container"></div>
   </div>
@@ -47,8 +47,13 @@ export default {
         pullToRefresh (end) {
             this.$refs.slider.update().then(end)
         },
-        pullUpMore () {
-
+        pullUpMore (end) {
+            this.$refs.recommend.update().then(end).catch(err => {
+                if(err) {
+                    console.log(err)
+                }
+                end()
+            })
         }
     }
 }

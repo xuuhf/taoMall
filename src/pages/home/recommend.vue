@@ -53,7 +53,7 @@ export default {
                         this.totalPage = data.totalPage
                         this.recommends = this.recommends.concat(data.itemList)
                         this.$emit('loaded', this.recommends);
-                        // resolve();
+                        resolve();
                     }
                 })
             })

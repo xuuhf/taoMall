@@ -148,7 +148,7 @@ export default {
         },
         pullDownEnd () {
             const swiper = this.$refs.swiper.swiper
-            this.pulling = true
+            this.pulling = false
             swiper.allowTouchMove = true
             swiper.setTransition(swiper.params.speed)
             swiper.setTranslate(PULL_DOWN_HEIGHT)
@@ -161,11 +161,10 @@ export default {
         },
         pullUpEnd () {
             const swiper = this.$refs.swiper.swiper
-            this.pulling = true
-            swiper.allowTouchMove = true // 禁止触摸
-            swiper.params.virtualTranslate = false // 不回弹
+            this.pulling = false
+            swiper.allowTouchMove = true // ke触摸
+            swiper.params.virtualTranslate = false // 回弹
             this.$refs.pullUpLoading.setText(PULL_UP_TEXT_END)
-            this.$emit('pull-up', this.pullUpEnd)
         }
 
 

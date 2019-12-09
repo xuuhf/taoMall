@@ -68,6 +68,9 @@ export default {
         update() {
             this.$refs.swiper && this.$refs.swiper.swiper.update()
         },
+        scrollToTop (speend, callback) {
+            this.$refs.swiper && this.$refs.swiper.swiper.slideTo(0, speend, callback)
+        },
         init () {
             this.pulling = false,
             this.indicator = true,
@@ -91,8 +94,12 @@ export default {
                 // mousewheel: true
             }
         },
+
         scroll () {
             const swiper = this.$refs.swiper.swiper
+
+            this.$emit('scroll', swiper.translate, this.$refs.swiper.swiper)
+
             if (this.fulling) {
                 return
             }
@@ -154,7 +161,6 @@ export default {
         },
         scrollEnd () {
             const swiper = this.$refs.swiper.swiper
-            console.log(swiper.translate,'222222')
             this.$emit('scroll-end', swiper.translate, swiper, this.pulling)
         },
         pullDownEnd () {

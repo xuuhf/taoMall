@@ -1,22 +1,27 @@
 <template>
   <div class="home">
     <header class="header-container">
-      <home-header :class="{HeaderTransition: isHeaderTransition}"  ref="header"/>
+      <home-header :isHeaderTransition="isHeaderTransition"  ref="header"/>
     </header>
     <me-scroll
         class="home-container"
         :data="recommends"
         pullDown
         pullUp
+        @scroll="scroll"
         @pull-down="pullToRefresh"
         @pull-up="pullUpMore"
         @scroll-end="scrollEnd"
+        @pull-down-transition-end="pullDownTransitionEnd"
+        ref="scroll"
     >
         <home-slider class="home-slider" ref="slider"/>
         <home-nav class="home-nav"/>
         <home-recommend class="home-recommend" @loaded="getRecommends" ref="recommend"/>
     </me-scroll>
-    <div class="backtop-container"></div>
+    <div class="backtop-container" v-if="isbackTopShow" @click="backToTop">
+        <back-top/>
+    </div>
   </div>
 </template>
 
@@ -26,6 +31,7 @@ import homeSlider from './slider'
 import homeNav from './nav'
 import homeRecommend from './recommend'
 import MeScroll from '../../components/scroll'
+import backTop from '../../components/backTop'
 export default {
     name: 'home',
     components: {
@@ -33,12 +39,15 @@ export default {
       homeSlider,
       homeNav,
       homeRecommend,
-      MeScroll
+      MeScroll,
+      backTop
     },
     data() {
         return {
             recommends: [],
-            isHeaderTransition: false
+            isHeaderTransition: false,
+            isbackTopShow: false,
+            headerHeight: 100
         }
     },
     methods: {
@@ -57,21 +66,32 @@ export default {
                 end()
             })
         },
+        pullDownTransitionEnd () {
+            this.$refs.header.show()
+        },
         scrollEnd (translate, swiper, pulling) {
             if(!pulling) {
                 this.changeHeadDisplay(translate)
             }
+            this.isbackTopShow = translate < 0 && -translate > swiper.height
+
+        },
+        scroll (translate) {
+            this.changeHeadDisplay(translate)
+        },
+        backToTop () {
+            this.$refs.scroll && this.$refs.scroll.scrollToTop()
         },
         changeHeadDisplay (translate) {
-            console.log(translate)
-            if(translate) {
-                // Header-transition
-                this.isHeaderTransition = true
-                console.log('222')
+            if(translate > 0) {
+               this.$refs.header.hide()
+               return
             }
-            // this.$refs.header.show()
-                this.isHeaderTransition = false
-            // this.isHeaderTransition = -translate > HEADER_TRANSITION_HEIGHT
+
+            this.$refs.header.show()
+
+            this.isHeaderTransition = -translate > this.headerHeight
+            console.log(this.isHeaderTransition)
         }
     }
 }
@@ -87,6 +107,9 @@ export default {
     width: 100%;
     height: 40px;
     line-height: 40px;
+    .Header-ransition {
+        background-color: red;
+    }
   }
   .home-container {
       overflow: hidden;
@@ -96,5 +119,14 @@ export default {
   .HeaderTransition {
       display: none;
   }
+  .backtop-container {
+    width: 50px;
+    height: 50px;
+    z-index: 20000;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+  }
+
 }
 </style>

@@ -1,45 +1,54 @@
 <template>
   <div class="category">
-      category
+    <header class="g-header-container">
+      <category-header/>
+    </header>
+    <div class="g-content-container">
+      <div class="sidebar">
+          <categoryTab/>
+      </div>
+      <div class="main"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import {swiper,swiperSlide} from 'vue-awesome-swiper'
-export default {
-    name: 'category',
+  import CategoryHeader from './header';
+  import CategoryTab from './tab';
+  import CategoryContent from './content';
+
+  export default {
+    name: 'Category',
     components: {
-        swiper,
-        swiperSlide
-    },
-    data() {
-        return {
-            swiperOption: {
-                direction: 'vertical',
-                slidesPerView: 'auto',
-                freeMode: true,
-                scrollbar:'.swiper-scrollbar',
-                mousewheel: true,
-                loop: true
-            },
-            scrollbar: true
-        }
+      CategoryHeader,
+      CategoryTab,
+      CategoryContent
     }
-}
+  };
 </script>
 
 <style lang="scss" scoped>
-    .category {
-        width: 100%;
-        height: 150px;
-        border: 1px solid palegoldenrod;
-    }
-    .content {
-        overflow: hidden;
+  .category {
+    overflow:hidden;
+    width:100%;
+    height:100%;
+    background-color: #eee;
+    .g-content-container {
         height: 100%;
-        width: 100%;
-    }
-    .text {
-        height: auto;
-    }
+      display: flex;
+  }
+  .sidebar {
+    width: 80px;
+    height: 100%;
+  }
+  .main {
+    flex: 1;
+    height: 100%;
+  }
+  }
+
+  .g-header-container {
+      height: 40px;
+  }
+
 </style>

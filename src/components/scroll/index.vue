@@ -15,7 +15,7 @@
                 ref="pullUpLoading"
             />
         </div>
-        <div class="swiper-scrollbar" slot="scrollbar"></div>
+        <div class="swiper-scrollbar" v-if="scrollbar" slot="scrollbar"></div>
       </swiper>
 </template>
 
@@ -45,11 +45,15 @@ export default {
         },
         pullDown: {
             type: Boolean,
-            default: true
+            default: false
         },
         pullUp: {
             type: Boolean,
-            default: true
+            default: false
+        },
+        scrollbar: {
+            type: Boolean,
+            default: false
         }
     },
     data () {

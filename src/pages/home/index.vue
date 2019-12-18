@@ -6,6 +6,7 @@
     <me-scroll
         class="home-container"
         :data="recommends"
+        :scrollbar="true"
         pullDown
         pullUp
         @scroll="scroll"

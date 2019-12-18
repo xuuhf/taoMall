@@ -1,73 +1,132 @@
 <template>
-  <div>
-    content
-  </div>
-  <!-- <div class="content-wrapper">
-    <div class="loading-container">
-      <me-loading/>
-      <div class="loading-wrapper">
-        <me-loading/>
-      </div>
-    </div>
-    <me-scroll ref="scroll">
-      <div class="content">
-        <div class="pic">
-          <a href="" class="pic-link">
-            <img src="" alt="" class="pic-img">
-          </a>
+    <div class="content-wrapper">
+        <div class="loading-container" v-if="isLoading">
+            <div class="loading-wrapper">
+                <me-loading/>
+            </div>
         </div>
-        <div class="section">
-          <h4 class="section-title"></h4>
-          <ul class="section-list">
-            <li
-              class="section-item">
-              <a href="" class="section-link">
-                <p class="section-pic">
-                  <img src="" alt="" class="section-img" />
-                </p>
-                <p class="section-name"></p>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </me-scroll>
-    <div class="g-backtop-container">
-      <me-backtop @backtop="backToTop" visible="isBacktopVisible"/>
+        <me-scroll ref="scroll" :scrollbar="true">
+            <div class="content" >
+                <div class="pic" v-if="content.banner">
+                    <a :href="content.banner.linkUrl" class="pic-link">
+                        <img @load="updateScroll" :src="content.banner.picUrl" alt="" class="pic-img">
+                    </a>
+                </div>
+                <div
+                    class="section"
+                    v-for="(section, index) in content.data"
+                    :key="index">
+                    <h4 class="section-title">{{section.name}}</h4>
+                    <ul class="section-list">
+                        <li
+                            class="section-item"
+                            v-for="(item, i) in section.itemList"
+                            :key="i">
+                        <a href="" class="section-link">
+                            <p class="section-pic">
+                            <img v-lazy="item.picUrl" alt="" class="section-img" />
+                            </p>
+                            <p class="section-name">{{item.name}}</p>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </me-scroll>
     </div>
-  </div>-->
 </template>
 
 <script>
-//   import MeLoading from 'base/loading';
-//   import MeScroll from 'base/scroll';
-//   import MeBacktop from 'base/backtop';
-  // import {getCategoryContent} from 'api/category';
-  // import storage from 'assets/js/storage';
-  // import {CATEGORY_CONTENT_KEY, CATEGORY_CONTENT_UPDATE_TIME_INTERVAL} from './config';
+import backTop from '../../components/backTop'
+import MeScroll from '../../components/scroll'
+import MeLoading from '../../components/loadings'
+import {getCategoryContent} from '../../api/category'
+import storage from '../../assets/js/storage';
+import {CATEGORY_CONTENT_KEY, CATEGORY_CONTENT_UPDATE_TIME_INTERVAL} from './config';
 
   export default {
     name: 'CategoryContent',
-    // components: {
-    //   MeLoading,
-    //   MeScroll,
-    //   MeBacktop
-    // },
-     data() {
-      return {
-        isBacktopVisible: false
-      };
+    components: {
+      MeLoading,
+      MeScroll,
+      backTop
+    },
+    props: {
+        tabId: {
+            typeof: String,
+            default: ''
+        }
+    },
+    data() {
+        return {
+            content: {},
+            isBacktopVisible: false,
+            isLoading: false
+        }
+    },
+    watch: {
+      tabId (id) {
+        this.isLoading = true;
+        this.getContent(id).then(() => {
+          this.isLoading = false;
+          this.backToTop()
+        });
+      }
     },
     methods: {
-      backToTop() {
-        this.$refs.scroll && this.$refs.scroll.scrollToTop();
-      }
+        getContent(id) {
+            let contents = storage.get(CATEGORY_CONTENT_KEY);
+            let updateTime;
+            const curTime = new Date().getTime();
+
+            if (contents && contents[id]) {
+                updateTime = contents[id].updateTime || 0;
+                if (curTime - updateTime <= CATEGORY_CONTENT_UPDATE_TIME_INTERVAL) { // localstorage
+                    return this.getContentByLocalStorage(contents[id]);
+                } else { // HTTP
+                    return this.getContentByHTTP(id).then(() => {
+                    this.updateLocalStorage(contents, id, curTime);
+                    });
+                }
+                } else { // HTTP
+                return this.getContentByHTTP(id).then(() => {
+                    this.updateLocalStorage(contents, id, curTime);
+                });
+            }
+        },
+        updateLocalStorage(contents, id, curTime) {
+            contents = contents || {};
+            contents[id] = {};
+            contents[id].data = this.content;
+            contents[id].updateTime = curTime;
+            storage.set(CATEGORY_CONTENT_KEY, contents);
+        },
+        getContentByLocalStorage(content) {
+            this.content = content.data;
+            return Promise.resolve();
+        },
+        getContentByHTTP(id) {
+            return getCategoryContent(id).then(data => {
+            return new Promise(resolve => {
+                if (data) {
+                    this.content = data;
+                    resolve();
+                }
+            });
+            });
+        },
+        updateScroll() {
+            this.$refs.scroll && this.$refs.scroll.update();
+        },
+        backToTop () {
+            this.$refs.scroll && this.$refs.scroll.scrollToTop();
+        }
     }
   };
 </script>
 
 <style lang="scss" scoped>
-// @import "~assets/scss/mixins";
+@import "../../assets/scss/mixin";
 
   .content-wrapper {
     position: relative;
@@ -78,11 +137,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    // z-index: $category-popup-z-index;
-    // @include flex-center();
+    z-index: 1000;
+    @include flex-center();
     width: 100%;
     height: 100%;
-    /*background-color: $modal-bgc;*/
+    // background-color: rgba(0, 0, 0, 0.4);
 
     .mine-loading {
       color: #fff;
@@ -92,7 +151,7 @@
   .loading-wrapper {
     width: 50%;
     padding: 30px 0;
-    // background-color: $modal-bgc;
+    background-color:  rgba(0, 0, 0, 0.4);
     border-radius: 4px;
   }
 
@@ -160,7 +219,7 @@
       height: 36px;
       line-height: 36px;
       text-align: center;
-    //   @include ellipsis();
+      @include ellipsis();
     }
   }
 

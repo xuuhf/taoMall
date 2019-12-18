@@ -5,9 +5,11 @@
     </header>
     <div class="g-content-container">
       <div class="sidebar">
-          <categoryTab/>
+          <categoryTab @switch-tab="tabSwitch"/>
       </div>
-      <div class="main"></div>
+      <div class="main">
+          <category-content :tabId="tabId"/>
+      </div>
     </div>
   </div>
 </template>
@@ -23,6 +25,16 @@
       CategoryHeader,
       CategoryTab,
       CategoryContent
+    },
+    data () {
+        return {
+            tabId: ''
+        }
+    },
+    methods: {
+        tabSwitch (id) {
+            this.tabId = id
+        }
     }
   };
 </script>

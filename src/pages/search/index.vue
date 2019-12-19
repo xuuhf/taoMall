@@ -2,11 +2,11 @@
   <transition name="search">
     <div class="search">
         <header class="g-header-container">
-            <search-header/>
+            <search-header @query="getQuery"/>
         </header>
         <div class="g-content-container">
             <search-history/>
-            <search-hot/>
+            <search-hot :loaded="hotLoaded"/>
         </div>
   </div>
   </transition>
@@ -29,6 +29,19 @@
       SearchHot,
       SearchHistory,
       SearchResult
+    },
+    data () {
+        return {
+            query: ''
+        }
+    },
+    methods: {
+        getQuery(query) {
+            this.query = query
+        },
+        hotLoaded () {
+
+        }
     }
   };
 </script>

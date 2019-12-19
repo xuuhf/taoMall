@@ -1,16 +1,13 @@
 <template>
-   <div>
-    hot
-  </div>
-  <!-- <div class="hot">
+  <div class="hot">
     <h4 class="hot-title">热门搜索</h4>
-    <div class="loading-container">
-      <me-loading/>
-    </div>
-    <ul class="hot-list">
-      <li></li>
-    </ul>
-  </div> -->
+        <div class="loading-container">
+            <me-loading/>
+        </div>
+        <ul class="hot-list">
+            <li></li>
+        </ul>
+  </div>
 </template>
 
 <script>

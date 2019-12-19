@@ -2,10 +2,10 @@
   <div class="history">
     <h4 class="history-title">历史搜索</h4>
     <ul class="g-list">
-      <li class="g-list-item">
-        <span class="g-list-text"></span>
-        <i class="iconfont icon-delete"></i>
-      </li>
+        <li class="g-list-item">
+            <span class="g-list-text"></span>
+            <i class="iconfont icon-delete"></i>
+        </li>
     </ul>
     <a href="javascript:;" class="history-btn"><i class="iconfont icon-clear"></i>清空历史搜索</a>
   </div>

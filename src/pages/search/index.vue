@@ -5,6 +5,7 @@
             <search-header/>
         </header>
         <div class="g-content-container">
+            <search-history/>
         </div>
   </div>
   </transition>
@@ -34,22 +35,22 @@
 <style lang="scss" scoped>
   @import "../../assets/scss/mixin";
 
-  .search {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1200;
-    background-color: #f5f5f5;
-  }
-  .search-enter-active,
-  .search-leave-active {
-      transition: all 0.3s;
-  }
+    .search {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1200;
+        background-color: #f5f5f5;
+    }
+    .search-enter-active,
+    .search-leave-active {
+        transition: all 0.3s;
+    }
 
-  .search-enter,
-  .search-leave-to {
-     transform: translate3d(100%, 0, 0);
-  }
+    .search-enter,
+    .search-leave-to {
+        transform: translate3d(100%, 0, 0);
+    }
 </style>

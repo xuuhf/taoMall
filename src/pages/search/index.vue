@@ -6,6 +6,7 @@
         </header>
         <div class="g-content-container">
             <search-history/>
+            <search-hot/>
         </div>
   </div>
   </transition>

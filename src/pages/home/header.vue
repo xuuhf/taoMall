@@ -3,8 +3,8 @@
     <com-header :class="{header: isHeaderTransition} " title="">
         <i class="iconfont iconscan" slot="left"/>
         <div class="header-center" slot="center">
-            <input class="h-input"  value="111"/>
-            <i class="iconfont iconsousuo" @click="toseach"/>
+            <input class="h-input"  value="111" @click="toseach"/>
+            <i class="iconfont iconsousuo" />
         </div>
         <i class="iconfont iconmessage" slot="right"/>
     </com-header>
@@ -38,12 +38,13 @@ export default {
             this.visible =false
         },
         toseach () {
-            axios.get('/data').then(res => {
-                console.log(res.data)
-            })
-            .catch(error => {
+            this.$router.push('/search')
+            // axios.get('/data').then(res => {
+            //     console.log(res.data)
+            // })
+            // .catch(error => {
 
-            })
+            // })
         }
     }
 }

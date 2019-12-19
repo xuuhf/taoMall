@@ -25,9 +25,9 @@ const router = new Router({
       name: 'personal',
       component: () => import('../pages/personal')
     },{
-        path: '/product',
-        name: 'product',
-        component: () => import('../pages/product')
+        path: '/search',
+        name: 'search',
+        component: () => import('../pages/search')
       },{
       path: '*',
       redirect: '/home'

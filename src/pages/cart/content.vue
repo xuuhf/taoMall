@@ -4,8 +4,8 @@
         <!-- <div class="c-loading">
             <loading />
         </div> -->
-        <me-scroll ref="scroll" :scrollbar="true">
-            <content-single class="content-single"></content-single>
+        <me-scroll :scrollbar="true">
+            <content-single class="content-single" :allTheCheck="allTheCheck"></content-single>
             <content-single class="content-single"></content-single>
             <content-single class="content-single"></content-single>
             <content-single class="content-single"></content-single>
@@ -28,6 +28,20 @@ export default {
         MeScroll,
         loading,
         contentSingle
+    },
+    props: {
+        allChecked: {
+            type: Boolean,
+            default: false
+        }
+    },
+    data () {
+        return {
+            allTheCheck: this.allChecked
+        }
+    },
+    created () {
+        console.log(this.allChecked, '0000')
     }
 }
 </script>

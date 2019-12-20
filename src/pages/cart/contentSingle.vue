@@ -2,7 +2,12 @@
     <div class="c-content-single">
         <com-header class="storeInfo">
             <div slot="left">
-                <div class="myradio"></div>
+                <!-- <div class="myradio" @click="checked"></div> -->
+                <input
+                    class="radioBox"
+                    :style="!theRadio ? {'background-color': '#fff'} : {'background-color': 'pink'}"
+                    @click="checked" type="radio" value="yes"
+                    name="reserve" id="radio_yes">
             </div>
             <div slot="center">
                 <i class="iconfont iconmessage"/>
@@ -13,7 +18,11 @@
         </com-header>
         <div class="goodsInfo">
             <div class="left-radio">
-                <div class="goodsRadio"></div>
+                <div
+                    ref="singleRadio"
+                    class="single-radio"
+                    :style="!theRadio ? {'background-color': '#fff'} : {'background-color': 'pink'}"
+                    @click="singleChecked"/>
             </div>
             <div class="center-img">
                 <img src=""/>
@@ -35,6 +44,46 @@ import comHeader from '../../components/comHeader'
 export default {
     components: {
         comHeader
+    },
+    props: {
+        allChecked: {
+            type: Boolean,
+            default: false
+        }
+    },
+    data () {
+        return {
+            theRadio: false,
+            singleRadio: false
+        }
+    },
+    watch: {
+        allChecked: function(val) {
+            console.log(val, '222')
+            if (val) {
+                this.theRadio = true
+            } else {
+                this.theRadio = false
+            }
+        }
+    },
+    methods: {
+        checked () {
+            if (this.theRadio) {
+                this.theRadio = false
+            } else {
+                this.theRadio = true
+            }
+        },
+        singleChecked () {
+            if (this.singleRadio) {
+                this.singleRadio = false
+                this.$refs.singleRadio.style.backgroundColor='white'
+            } else {
+                this.singleRadio = true
+                this.$refs.singleRadio.style.backgroundColor='pink'
+            }
+        }
     }
 }
 </script>
@@ -44,13 +93,23 @@ export default {
     .c-content-single {
         margin-bottom: 10px;
     }
+    .single-radio,
+    .single-checked,
     .goodsRadio,
-    .myradio {
+    .radioBox {
+        -webkit-appearance: none;
         width: 17px;
         height: 17px;
-        border: 1px solid #eee;
+        padding: 0;
+        // background-color: #fff;
+        border: 1px solid #c9c9c9;
         border-radius: 50%;
         outline: none;
+        margin-right: 22px;
+        cursor: pointer;
+    }
+    .single-radio {
+        background-color: #fff;
     }
     .storeInfo {
         height: 30px;

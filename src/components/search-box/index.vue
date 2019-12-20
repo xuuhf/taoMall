@@ -11,16 +11,16 @@
             v-model="query"
             v-if="!fake">
         <i
-        class="iconfont icon-close"
-        v-show="query"
-        @click="reset"
+            class="iconfont icon-close"
+            v-show="query"
+            @click="reset"
         />
     </div>
 </template>
 
 <script>
-  import {debounce} from '../../assets/js/util';
-  export default {
+import {debounce} from '../../assets/js/util';
+export default {
     name: 'MeSearchBox',
     props: {
         placeholder: {
@@ -54,36 +54,36 @@
             this.focus();
         }
     }
-  };
+};
 </script>
 
 <style lang="scss" scoped>
-  @import "../../assets/scss/mixin";
+    @import "../../assets/scss/mixin";
 
-  $search-box-height: 30px;
+    $search-box-height: 30px;
 
-  .mine-search-box-wrapper {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: $search-box-height;
-    padding: 0 7px;
-    background-color: #fff;
-    border-radius: $search-box-height / 2;
-  }
+    .mine-search-box-wrapper {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: $search-box-height;
+        padding: 0 7px;
+        background-color: #fff;
+        border-radius: $search-box-height / 2;
+    }
 
-  .iconfont {
-    color: #ccc;
-    font-size: 18px;
-    font-weight: bold;
-  }
+    .iconfont {
+        color: #ccc;
+        font-size: 18px;
+        font-weight: bold;
+    }
 
-  .mine-search-box {
-    flex: 1;
-    background: none;
-    border: none;
-    margin: 0 6px;
-    color: #666;
-    line-height: 1.5;
-  }
+    .mine-search-box {
+        flex: 1;
+        background: none;
+        border: none;
+        margin: 0 6px;
+        color: #666;
+        line-height: 1.5;
+    }
 </style>

@@ -1,13 +1,23 @@
 <template>
-  <div class="history">
+  <div class="history" v-if="historys.length">
     <h4 class="history-title">历史搜索</h4>
-    <ul class="g-list">
-        <li class="g-list-item">
-            <span class="g-list-text"></span>
-            <i class="iconfont icon-delete"></i>
+    <transition-group name="list" tag="ul" class="g-list">
+        <li
+            class="g-list-item"
+            v-for="item of historys"
+            :key="item"
+            @click="$_search_selectItem(item)">
+            <span class="g-list-text">{{item}}</span>
+            <i
+                class="iconfont icon-delete"
+                @click.stop="removeItem(item)"
+            />
         </li>
-    </ul>
-    <a href="javascript:;" class="history-btn"><i class="iconfont icon-clear"></i>清空历史搜索</a>
+    </transition-group>
+    <a href="javascript:;" class="history-btn" @click="showConfirm">
+        <i class="iconfont icon-clear"></i>
+        清空历史搜索
+    </a>
   </div>
 </template>
 
@@ -16,7 +26,35 @@
   import {SEARCH_HISTORY_KEYWORD_KEY} from './config';
   import {searchMixin} from '../../assets/js/mixins';
   export default {
-    name: 'SearchHistory'
+    name: 'SearchHistory',
+    mixins: [searchMixin],
+    data () {
+        return {
+            historys: []
+        }
+    },
+    created () {
+        this.getKeyWorld()
+    },
+    methods: {
+        update () {
+            this.getKeyWorld()
+        },
+        getKeyWorld () {
+            this.historys = storage.get(SEARCH_HISTORY_KEYWORD_KEY, [])
+        },
+        removeItem (item) {
+            this.historys = this.historys.filter(val => val !== item)
+            storage.set(SEARCH_HISTORY_KEYWORD_KEY, this.historys)
+            this.$emit('remove-item', item)
+        },
+        showConfirm(){
+            this.$emit('show-confirm')
+        },
+        clear () {
+            storage.remove(SEARCH_HISTORY_KEYWORD_KEY)
+        }
+    }
   };
 </script>
 
@@ -55,6 +93,18 @@
     border-top: 1px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
     margin-bottom: 20px;
+  }
+  .list {
+        &-enter-active,
+        &-leave-active {
+            transition: height 0.1s;
+        }
+
+        &-enter,
+        &-leave-to {
+            height: 0;
+        }
+
   }
 
 </style>

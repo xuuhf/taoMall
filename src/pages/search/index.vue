@@ -5,16 +5,28 @@
             <search-header @query="getQuery"/>
         </header>
         <div class="g-content-container">
-            <search-history/>
-            <search-hot :loaded="hotLoaded"/>
+            <me-scroll ref="scroll">
+                <search-hot @loaded="updateScroll" v-show="!query"/>
+                <search-history
+                @show-confirm="showConfirm"
+                ref="history"
+                v-show="!query"
+                @remove-item="updateScroll"/>
+                <search-result :query="query" v-show="query"/>
+            </me-scroll>
         </div>
+        <me-confirm
+            msg="确定要清空吗"
+            ref="confirm"
+            @confirm="clearAllSearchHistorys"
+        />
   </div>
   </transition>
 </template>
 
 <script>
   import MeScroll from '../../components/scroll';
-//   import MeConfirm from 'base/confirm';
+  import MeConfirm from '../../components/confirm';
   import SearchHeader from './header';
   import SearchHot from './hot';
   import SearchHistory from './history';
@@ -24,7 +36,7 @@
     name: 'search',
     components: {
       MeScroll,
-    //   MeConfirm,
+      MeConfirm,
       SearchHeader,
       SearchHot,
       SearchHistory,
@@ -39,16 +51,23 @@
         getQuery(query) {
             this.query = query
         },
-        hotLoaded () {
-
+        clearAllSearchHistorys () {
+            this.$refs.history.clear()
+            this.$refs.history.update()
+        },
+        showConfirm () {
+            this.$refs.confirm.show()
+        },
+        updateScroll () {
+            this.$refs.scroll.update()
         }
     }
   };
 </script>
 
 <style lang="scss" scoped>
-  @import "../../assets/scss/mixin";
-
+@import "../../assets/scss/mixin";
+@import './index.scss';
     .search {
         position: absolute;
         top: 0;
@@ -66,5 +85,15 @@
     .search-enter,
     .search-leave-to {
         transform: translate3d(100%, 0, 0);
+    }
+    .g-header-container {
+        height: 45px;
+        background-color: #fff;
+    }
+    .g-content-container {
+        height: 100%;
+    }
+    .swiper-wrapper {
+        height: auto;
     }
 </style>

@@ -9,7 +9,8 @@
             :placeholder="placeholder"
             ref="input"
             v-model="query"
-            v-if="!fake">
+            v-if="!fake"
+            v-focus>
         <i
             class="iconfont icon-close"
             v-show="query"

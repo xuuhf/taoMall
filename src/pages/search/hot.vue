@@ -9,7 +9,7 @@
                 class="hot-item"
                 v-for="(item, index) of hotList"
                 :key="index"
-                @click="gotoHotDEtail(item.hotWord)">
+                @click="$_search_selectItem(item.hotWord)">
                 {{item.hotWord}}
             </li>
         </ul>
@@ -17,15 +17,15 @@
 </template>
 
 <script>
-  import MeLoading from '../../components/loadings'
-  import {getSearchHotKeyword} from '../../api/search';
-  import {searchMixin} from '../../assets/js/mixins';
-
+import MeLoading from '../../components/loadings'
+import {getSearchHotKeyword} from '../../api/search';
+import {searchMixin} from '../../assets/js/mixins';
   export default {
     name: 'SearchHot',
     components: {
         MeLoading
     },
+    mixins: [searchMixin],
     data () {
         return {
             hotList: []
@@ -42,6 +42,7 @@
                 return new Promise(reslove => {
                     if (res) {
                         this.hotList = res
+                        reslove()
                     }
                 })
             })

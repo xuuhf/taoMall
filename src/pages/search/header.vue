@@ -28,7 +28,7 @@
         this.$emit('query', query);
       },
       goBack() {
-        this.$router.back();
+        this.$router.go(-1);
       }
     }
   };

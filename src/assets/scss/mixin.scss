@@ -9,7 +9,7 @@
 @mixin flex-between {
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
 }
 
 @mixin flex-aronud {

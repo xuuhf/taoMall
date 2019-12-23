@@ -9,6 +9,7 @@ import 'swiper/dist/css/swiper.css'
 import './assets/scss/global.scss';
 import './assets/scss/base.scss'
 import './assets/scss/iconfont.scss'
+import './assets/scss/_list.scss'
 import './assets/js/mock'
 
 // fastclick.attach(document.body)
@@ -18,7 +19,11 @@ Vue.use(VueLazyload, {
     loading: require('./assets/images/loading.gif')
 })
 
-
+Vue.directive('focus', {
+    inserted: function(el) {
+        el.focus()
+    }
+})
 new Vue({
     el: '#app',
     components: {

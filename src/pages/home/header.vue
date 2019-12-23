@@ -2,22 +2,27 @@
   <div class="homeHeader" v-show="visible">
     <com-header :class="{header: isHeaderTransition} " title="">
         <i class="iconfont iconscan" slot="left"/>
-        <div class="header-center" slot="center">
-            <input class="h-input"  value="111" @click="toseach"/>
-            <i class="iconfont iconsousuo" />
-        </div>
+        <me-search-box
+            slot="center"
+            placeholder="开学季有礼"
+            fake
+            @query="getQuery"
+            @click.native="goSearch"
+        />
         <i class="iconfont iconmessage" slot="right"/>
     </com-header>
   </div>
 </template>
 
 <script>
+import MeSearchBox from '../../components/search-box'
 import comHeader from '../../components/comHeader'
 import axios from 'axios'
 export default {
     name: 'homeHeader',
     components: {
-        comHeader
+        comHeader,
+        MeSearchBox
     },
     props: {
         isHeaderTransition: {
@@ -37,7 +42,10 @@ export default {
         hide () {
             this.visible =false
         },
-        toseach () {
+        getQuery (query) {
+            console.log(query)
+        },
+        goSearch () {
             this.$router.push('/search')
             // axios.get('/data').then(res => {
             //     console.log(res.data)

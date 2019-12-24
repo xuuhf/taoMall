@@ -5,14 +5,16 @@
         <div class="mine-confirm-title" v-if="title">{{title}}</div>
         <div class="mine-confirm-msg">{{msg}}</div>
         <div class="mine-confirm-btns">
-          <button
-            class="mine-confirm-btn mine-confirm-cancel"
-            @click="cancel"
-          >{{cancelBtnText}}</button>
-          <button
-            class="mine-confirm-btn mine-confirm-ok"
-            @click="confirm"
-          >{{confirmBtnText}}</button>
+            <button
+                class="mine-confirm-btn mine-confirm-cancel"
+                @click="cancel">
+                {{cancelBtnText}}
+                </button>
+            <button
+                class="mine-confirm-btn mine-confirm-ok"
+                @click="confirm">
+                {{confirmBtnText}}
+            </button>
         </div>
       </div>
     </div>
@@ -66,9 +68,9 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../../assets/scss/mixin";
+@import "../../assets/scss/mixin";
 
-  .mine-confirm-wrapper {
+.mine-confirm-wrapper {
     position: absolute;
     top: 0;
     right: 0;
@@ -77,9 +79,9 @@
     z-index: 3000;
     @include flex-center();
     background-color:  rgba(0, 0, 0, 0.4);
-  }
+}
 
-  .mine-confirm {
+.mine-confirm {
     overflow: hidden;
     width: 88%;
     background-color: #fff;
@@ -87,73 +89,72 @@
     font-size: 16px;
 
     &-title {
-      padding: 20px 15px 0;
-      font-size: 18px;
-      text-align: center;
-      @include ellipsis();
+        padding: 20px 15px 0;
+        font-size: 18px;
+        text-align: center;
+        @include ellipsis();
 
-      & + .mine-confirm-msg {
+        & + .mine-confirm-msg {
         padding-top: 20px;
         padding-bottom: 20px;
-      }
     }
+}
 
-    &-msg {
-      padding: 40px 15px;
-      text-align: center;
-      line-height: 1.5;
-    }
+&-msg {
+    padding: 40px 15px;
+    text-align: center;
+    line-height: 1.5;
+}
 
-    &-btns {
-      display: flex;
-    }
+&-btns {
+    display: flex;
+}
 
-    &-btn {
-      flex: 1;
-      height: 44px;
-      line-height: 44px;
-      background: none;
-      border: none;
-    }
+&-btn {
+    flex: 1;
+    height: 44px;
+    line-height: 44px;
+    background: none;
+    border: none;
+}
 
-    &-cancel {
-      border-top: 1px solid #e3e5e9;
-    }
+&-cancel {
+    border-top: 1px solid #e3e5e9;
+}
 
-    &-ok {
-      background-color: #f23030;
-      color: #fff;
-    }
-  }
+&-ok {
+    background-color: #f23030;
+    color: #fff;
+}
+}
 
-  .mine-confirm {
+.mine-confirm {
     &-enter-active,
     &-leave-active {
-      transition: opacity 0.3s;
+        transition: opacity 0.3s;
     }
 
     &-enter,
     &-leave-to {
-      opacity: 0;
+        opacity: 0;
     }
 
     &-enter-active {
-      .mine-confirm {
-        animation: bounce-in 0.3s;
-      }
+        .mine-confirm {
+            animation: bounce-in 0.3s;
+        }
     }
-  }
+}
 
-  // https://cn.vuejs.org/v2/guide/transitions.html#CSS-动画
-  @keyframes bounce-in {
+@keyframes bounce-in {
     0% {
-      transform: scale(0);
+        transform: scale(0);
     }
     50% {
-      transform: scale(1.1);
+        transform: scale(1.1);
     }
     100% {
-      transform: scale(1);
+        transform: scale(1);
     }
-  }
+}
 </style>

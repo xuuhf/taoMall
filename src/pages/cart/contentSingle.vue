@@ -12,7 +12,7 @@
             <div slot="center">
                 <i class="iconfont iconmessage"/>
                 <span>天猫国际</span>
-                <i class="iconfont iconmessage"/>
+                <i class="iconfont iconyoujiantou"/>
             </div>
             <div slot="right">333</div>
         </com-header>

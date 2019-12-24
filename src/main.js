@@ -4,7 +4,7 @@ import router from './router';
 // import fastclick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
 import 'swiper/dist/css/swiper.css'
-
+import echarts from "echarts";
 
 import './assets/scss/global.scss';
 import './assets/scss/base.scss'
@@ -12,6 +12,7 @@ import './assets/scss/iconfont.scss'
 import './assets/scss/_list.scss'
 import './assets/js/mock'
 
+Vue.prototype.$echarts = echarts;
 // fastclick.attach(document.body)
 Vue.config.productionTip = false
 Vue.use(VueLazyload, {

@@ -8,10 +8,10 @@
             <me-scroll ref="scroll">
                 <search-hot @loaded="updateScroll" v-show="!query"/>
                 <search-history
-                @show-confirm="showConfirm"
-                ref="history"
-                v-show="!query"
-                @remove-item="updateScroll"/>
+                    @show-confirm="showConfirm"
+                    ref="history"
+                    v-show="!query"
+                    @remove-item="updateScroll"/>
                 <search-result :query="query" v-show="query"/>
             </me-scroll>
         </div>

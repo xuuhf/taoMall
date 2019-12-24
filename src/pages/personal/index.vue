@@ -22,8 +22,11 @@
            </div>
            <div class="content-order">
                <div class="my-order">
-                   <span class="goods-li">我的订单</span>
-                   <span class="goods-li">全部订单</span>
+                    <span class="goods-li">我的订单</span>
+                    <div>
+                        <span class="goods-li">全部订单</span>
+                        <i class="iconfont iconyoujiantou"/>
+                    </div>
                </div>
                 <ul class="order-box">
                     <li class="waitPay">
@@ -40,7 +43,7 @@
                     </li>
                 </ul>
            </div>
-           <div class="order-history-box">
+           <div class="order-history-box" @click="gotoRecord">
                <div class="order-history">
                    <span>我的消费记录</span>
                    <i class="iconfont iconyoujiantou"/>
@@ -64,6 +67,9 @@ export default {
     },
     methods: {
         weekHistory () {
+        },
+        gotoRecord () {
+            this.$router.push('./record')
         }
     }
 }

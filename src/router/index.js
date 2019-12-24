@@ -28,7 +28,11 @@ const router = new Router({
         path: '/search',
         name: 'search',
         component: () => import('../pages/search')
-      },{
+    },{
+        path: '/record',
+        name: 'record',
+        component: () => import('../pages/personal/record')
+    },{
       path: '*',
       redirect: '/home'
     }

@@ -4,14 +4,13 @@
             <div class="user-header" slot="left">我的消费记录</div>
         </com-header>
         <div class="echarts-box">
-            <div class="pieChart" ref="pieChart"></div>
+            <div class="lineChart" ref="lineChart"></div>
         </div>
     </div>
 </template>
 
 <script>
 import comHeader from '../../components/comHeader'
-// let echarts = require('echarts/lib/chart/pie')
 export default {
     name: 'record',
     components: {
@@ -26,21 +25,21 @@ export default {
     },
     methods: {
         orderRecord () {
-            let pieChart = this.$echarts.init(this.$refs.pieChart)
+            let lineChart = this.$echarts.init(this.$refs.lineChart)
             let option = ({
                 xAxis: {
                     type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月','八月', '九月', '十月', '十一月', '十二月']
                 },
                 yAxis: {
                     type: 'value'
                 },
                 series: [{
-                    data: [820, 932, 901, 934, 1290, 1330, 1320],
+                    data: [820, 932, 901, 934, 1290, 1330, 1320, 820, 932, 901, 934, 1290],
                     type: 'line'
                 }]
             })
-            pieChart.setOption(option)
+            lineChart.setOption(option)
         }
     }
 }
@@ -60,10 +59,13 @@ export default {
     @include flex-aronud();
     margin: 0 auto;
 }
-.pieChart {
+.lineChart {
     width: 95%;
     height: 190px;
     margin: 0 auto;
     @include flex-aronud();
+}
+.pie-echarts-box {
+
 }
 </style>

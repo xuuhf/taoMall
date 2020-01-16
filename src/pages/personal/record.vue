@@ -26,7 +26,7 @@ export default {
         }
     },
     mounted () {
-        // this.orderRecord()
+        this.orderRecord()
         this.payRecord()
     },
     methods: {

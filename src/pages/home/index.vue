@@ -14,8 +14,7 @@
         @pull-up="pullUpMore"
         @scroll-end="scrollEnd"
         @pull-down-transition-end="pullDownTransitionEnd"
-        ref="scroll"
-    >
+        ref="scroll">
         <home-slider class="home-slider" ref="slider"/>
         <home-nav class="home-nav"/>
         <home-recommend class="home-recommend" @loaded="getRecommends" ref="recommend"/>

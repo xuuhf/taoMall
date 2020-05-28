@@ -16,6 +16,14 @@ export default {
         return {
           msg: 'xuxu'
         }
+    },
+    created () {
+        this.getText()
+    },
+    methods: {
+        getText () {
+            console.log(this.count)
+        }
     }
 }
 </script>

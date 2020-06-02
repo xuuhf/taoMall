@@ -11,6 +11,14 @@ import './assets/scss/base.scss'
 import './assets/scss/iconfont.scss'
 import './assets/scss/_list.scss'
 import './assets/js/mock'
+import vueJsonp from 'vue-jsonp'
+// import BMap from 'vue-baidu-map'
+
+Vue.use(vueJsonp)
+// Vue.use(BMap, {
+//     /* 申请的百度密钥*/
+//     ak: '5K78EV8zZgq4EiyKZ8rcm4untznmRWwr'
+//   })
 
 Vue.prototype.$echarts = echarts;
 // fastclick.attach(document.body)

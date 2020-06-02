@@ -87,7 +87,22 @@ export default {
                 series: [{ // 系列列表。每个系列通过 type 决定自己的图表类型
                     name: '示例1',
                     // data: [820, 932, 901, 934, 1290, 1330, 1320, 820, 932, 1901, 1934, 1290],
-                    type: 'line'
+                    type: 'line',
+                    itemStyle: {
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0, color: 'red' // 0% 处的颜色
+                            }, {
+                                offset: 1, color: 'blue' // 100% 处的颜色
+                            }],
+                            global: false // 缺省为 false
+                        }
+                    },
                 },
                 { // 系列列表。每个系列通过 type 决定自己的图表类型
                     name: '示例2',
@@ -96,6 +111,9 @@ export default {
                 }]
             })
             lineChart.setOption(option)
+            lineChart.on('legendselectchanged', function(params) {
+                console.log(params, 'legendselectchanged')
+            })
         },
         payRecord () {
             let pieChart = this.$echarts.init(this.$refs.pieChart)

@@ -33,6 +33,10 @@ const router = new Router({
         name: 'record',
         component: () => import('../pages/personal/record')
     },{
+        path: '/mymap',
+        name: 'mymap',
+        component: () => import('../pages/personal/mymap')
+    },{
       path: '*',
       redirect: '/home'
     }

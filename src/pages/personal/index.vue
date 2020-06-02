@@ -49,6 +49,12 @@
                    <i class="iconfont iconyoujiantou"/>
                 </div>
            </div>
+           <div class="order-history-box" @click="gotoMap">
+               <div class="order-history">
+                   <span>我的地图</span>
+                   <i class="iconfont iconyoujiantou"/>
+                </div>
+           </div>
        </div>
     </div>
 </template>
@@ -70,6 +76,9 @@ export default {
         },
         gotoRecord () {
             this.$router.push('./record')
+        },
+        gotoMap () {
+            this.$router.push('./mymap')
         }
     }
 }

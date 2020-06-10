@@ -13,7 +13,8 @@ import './assets/js/mock'
 import vueJsonp from 'vue-jsonp'
 // import BMap from 'vue-baidu-map'
 import VueClipboard from 'vue-clipboard2'
-
+import { Dialog } from 'vant'
+import 'vant/lib/index.css';
 Vue.use(VueClipboard)
 
 import VideoPlayer from 'vue-video-player'
@@ -26,7 +27,6 @@ Vue.use(vueJsonp)
 //     ak: '5K78EV8zZgq4EiyKZ8rcm4untznmRWwr'
 //   })
 
-
 Vue.prototype.$echarts = echarts;
 // fastclick.attach(document.body)
 Vue.config.productionTip = false
@@ -35,6 +35,7 @@ Vue.use(VueLazyload, {
     loading: require('./assets/images/loading.gif')
 })
 
+Vue.use(Dialog)
 Vue.directive('focus', {
     inserted: function(el) {
         el.focus()

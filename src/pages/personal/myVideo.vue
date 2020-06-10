@@ -5,6 +5,9 @@
             v-show="player_play"
             muted
         />
+        <!-- <div v-show="!player_play" class="play-btn">
+            <p ><i class="play" @click="goPlay"></i></p>
+        </div> -->
     </div>
 </template>
 
@@ -17,14 +20,15 @@ export default {
         return {
            player_play: true,
            poster: 'https://github.com/dblate/larkplayer/blob/master/screenshots/poster.jpg?raw=true',
-           src: ''
+           src: '',
+           play: null
         }
     },
     created () {
         this.src = 'https://baikebcs.bdimg.com/baike-other/big-buck-bunny.mp4'
     },
     mounted () {
-        let player = larkplayer('lark-player', {
+        this.player = larkplayer('lark-player', {
             width: '100%',
             height: '100%',
             src: this.src,
@@ -41,7 +45,7 @@ export default {
             muted: true,
             // “内联”播放
             playsinline: true,
-            poster: error,
+            poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591764939887&di=a9efcd59f0ba00cd74fc7bcc54076b19&imgtype=0&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D3522767679%2C2275722546%26fm%3D214%26gp%3D0.jpg',
             preload: 'metadata',
         })
         // player.on('firstplay', function () {
@@ -49,9 +53,15 @@ export default {
         //     // 跳转到视频中间
         //     player.currentTime(duration / 2);
         // });
-        player.play()
+        // this.player.play()
 
     },
+    methods: {
+        goPlay () {
+            this.player_play = true
+            this.player.play()
+        }
+    }
 }
 </script>
 
@@ -69,9 +79,9 @@ export default {
         width: 100%;
         height: 100%;
     }
-    .player-btn {
-        width: 100%;
-        height: 100%;
+    .play-btn {
+        width: 40px;
+        height: 40px;
         position: absolute;
         left: 0;
         top: 0;

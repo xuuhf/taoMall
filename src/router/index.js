@@ -37,6 +37,14 @@ const router = new Router({
         name: 'mymap',
         component: () => import('../pages/personal/mymap')
     },{
+        path: '/myVideo',
+        name: 'myVideo',
+        component: () => import('../pages/personal/myVideo')
+    },{
+        path: '/myVideo2',
+        name: 'myVideo2',
+        component: () => import('../pages/personal/myVideo2')
+    },{
       path: '*',
       redirect: '/home'
     }

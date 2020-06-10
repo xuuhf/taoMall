@@ -3,7 +3,7 @@
     </div>
 </template>
 <script>
-import BMap from 'BMap'
+// import BMap from 'BMap'
 export default {
     name: 'HelloWorld',
     data() {

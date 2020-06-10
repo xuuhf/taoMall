@@ -55,11 +55,60 @@
                    <i class="iconfont iconyoujiantou"/>
                 </div>
            </div>
+           <div class="order-history-box" @click="gotoVideo">
+               <div class="order-history">
+                   <span>视频播放</span>
+                   <i class="iconfont iconyoujiantou"/>
+                </div>
+           </div>
+           <div class="order-history-box" @click="gotoVideo2">
+               <div class="order-history">
+                   <span>视频播放2</span>
+                   <i class="iconfont iconyoujiantou"/>
+                </div>
+           </div>
+            <div class="order-history-box_">
+               <div class="order-history">
+                   <span>复制</span>
+                   <div class="text" >
+                       <div class="copy">
+                            <input id="num" type="text" v-model="mynum">
+                            <button
+                                type="button"
+                                class="btn"
+                                @click="onCopy">
+                                复制
+                            </button>
+                        </div>
+                        <div class="cutcopy">
+                            <input id="cutnum" type="text" v-model="message">
+                            <button
+                                type="button"
+                                class="btn"
+                                data-clipboard-action="cut"
+                                data-clipboard-target="#cutnum"
+                                @click="cutcopy">
+                                剪切复制
+                            </button>
+                        </div>
+                        <div class="copyformattribute">
+                            <button
+                                type="button"
+                                class="btn"
+                                data-clipboard-text="从属性复制文本"
+                                @click="cutcopy">
+                                从属性复制文本
+                            </button>
+                        </div>
+                   </div>
+                </div>
+           </div>
        </div>
     </div>
 </template>
 
 <script>
+// import Clipboard from 'clipboard'
 import personHeader from './header'
 export default {
     name: 'personal',
@@ -68,7 +117,10 @@ export default {
     },
     data() {
         return {
-          msg: 'personal'
+          msg: 'personal',
+          orderId: '123456789',
+          mynum: '',
+          message: '333333333'
         }
     },
     methods: {
@@ -79,6 +131,45 @@ export default {
         },
         gotoMap () {
             this.$router.push('./mymap')
+        },
+        onCopy (){
+            this.$copyText(this.mynum).then((e) => {
+                    console.log(e)
+                })
+        },
+        handleCopy () {
+            if (this.mynum) {
+                 console.log('复制成功')
+                // this.$copyText(this.mynum).then((e) => {
+                //     console.log(e)
+                // })
+                // console.log(this.mynum)
+                // let clipboard = new Clipboard('.btn')
+                // clipboard.on('success', (e) => {
+                //     console.log('复制成功')
+                // })
+                // clipboard.on('error', (e) => {
+                //     console.log('该浏览器不支持自动复制')
+                // })
+            }
+        },
+        onError: function (e) {
+            alert('Failed to copy texts')
+        },
+        cutcopy () {
+            let clipboard = new ClipboardJS('.btn')
+            clipboard.on('success', (e) => {
+                console.log('复制成功')
+            })
+            clipboard.on('error', (e) => {
+                console.log('该浏览器不支持自动复制')
+            })
+        },
+        gotoVideo () {
+            this.$router.push('./myVideo')
+        },
+        gotoVideo2 () {
+            this.$router.push('./myVideo2')
         }
     }
 }
@@ -145,5 +236,31 @@ export default {
     @include flex-between();
     margin: 0 auto;
     font-size: 13px;
+}
+.order-history-box_ {
+    width: 95%;
+    height: 200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.text {
+    width: 90%;
+    height: 200px;
+    @include flex-between();
+    flex-wrap: wrap;
+}
+#num {
+    border: 1px solid red;
+    height: 30px;
+}
+#cutnum {
+    border: 1px solid red;
+    height: 30px;
+}
+.btn {
+    width: 80px;
+    height: 30px;
 }
 </style>

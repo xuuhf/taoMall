@@ -22,9 +22,9 @@
            </div>
            <div class="content-order">
                <div class="my-order">
-                    <span class="goods-li">我的订单</span>
+                    <span class="goods-li" @click="gotoScroll">我的订单mescroll</span>
                     <div>
-                        <span class="goods-li">全部订单</span>
+                        <span class="goods-li" @click="myorder">全部订单</span>
                         <i class="iconfont iconyoujiantou"/>
                     </div>
                </div>
@@ -124,6 +124,12 @@ export default {
         }
     },
     methods: {
+        gotoScroll () {
+            this.$router.push('./mescrollOrder')
+        },
+        myorder () {
+            this.$router.push('./order')
+        },
         weekHistory () {
         },
         gotoRecord () {

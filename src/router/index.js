@@ -29,9 +29,17 @@ const router = new Router({
         name: 'search',
         component: () => import('../pages/search')
     },{
-        path: '/record',
-        name: 'record',
-        component: () => import('../pages/personal/record')
+        path: '/search',
+        name: 'search',
+        component: () => import('../pages/search')
+    },{
+        path: '/order',
+        name: 'order',
+        component: () => import('../pages/personal/order')
+    },{
+        path: '/mescrollOrder',
+        name: 'mescrollOrder',
+        component: () => import('../pages/personal/mescrollOrder')
     },{
         path: '/mymap',
         name: 'mymap',

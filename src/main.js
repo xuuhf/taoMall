@@ -13,9 +13,24 @@ import './assets/js/mock'
 import vueJsonp from 'vue-jsonp'
 // import BMap from 'vue-baidu-map'
 import VueClipboard from 'vue-clipboard2'
-import { Dialog } from 'vant'
+import { Dialog} from 'vant'
+import debounce from './assets/js/util'
 import 'vant/lib/index.css';
 Vue.use(VueClipboard)
+
+Vue.use(Dialog)
+// 图片放大
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
+Vue.use(Viewer)
+Viewer.setDefaults({
+  // 需要配置的属性
+    toolbar: false
+})
+
+import preview from 'vue-photo-preview'
+import 'vue-photo-preview/dist/skin.css'
+Vue.use(preview)
 
 import VideoPlayer from 'vue-video-player'
 require('video.js/dist/video-js.css')
@@ -34,6 +49,9 @@ Vue.use(VueLazyload, {
     error: require('./assets/images/error.png'),
     loading: require('./assets/images/loading.gif')
 })
+
+// 防抖函数
+Vue.prototype.$debounce = debounce
 
 Vue.use(Dialog)
 Vue.directive('focus', {

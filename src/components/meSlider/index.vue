@@ -30,6 +30,10 @@ export default {
                 return value >= 0;
             }
         },
+        slidesPerView: {
+            type: Number,
+            default: 3
+        },
         loop: {
             type: Boolean,
             default: true
@@ -47,7 +51,8 @@ export default {
     },
     data() {
         return {
-          keyId: Math.random()
+          keyId: Math.random(),
+          swiperOption: {}
         }
     },
     watch: {
@@ -65,14 +70,15 @@ export default {
     methods: {
         init () {
             this.swiperOption = {
+                // effect : 'cube',
                 watchOverflow: true,
                 direction: this.direction,
                 autoplay: this.interval ? {
                     delay: this.interval,
                     disableOnInteraction: false
                 } : false,
-                slidesPerView: 1,
-                loop: this.data.length <= 1 ? false : this.loop,
+                // slidesPerView: 3,
+                loop: true,
                 pagination: {
                     el: this.pagination ? '.swiper-pagination' : null,
                     clickable: true

@@ -7,6 +7,7 @@
         :autoplay="swiperOption.autoplay"
         :speed="swiperOption.speed"
         :interval="swiperOption.interval"
+        :slidesPerView="swiperOption.slidesPerView"
         :data="sliders"
         v-else
         >
@@ -38,6 +39,7 @@ export default {
                 pagination: true, // 是否需要分页器
                 loop: true, // 循环
                 interval: 0, // 自动播放时间间隔，为0则不自动播放
+                slidesPerView : 3
             },
             sliders: [
                 // {

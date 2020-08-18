@@ -7,10 +7,15 @@
            <div class="content-nav">
                <ul class="nav-single">
                    <li class="content-nav-li">
-                        <span>11</span><span>收藏夹</span>
+                        <span>11</span><span>
+                            <count-to :startVal='startVal' :endVal='endVal' :duration='3000' />
+                        </span>
                    </li>
                    <li class="content-nav-li">
-                        <span>11</span><span>收藏夹</span>
+                        <span>11</span><span>
+                            <count-up
+                                :startVal='0' :endVal='2020' :duration='3000'/>
+                        </span>
                    </li>
                    <li class="content-nav-li">
                         <span>11</span><span>收藏夹</span>
@@ -108,19 +113,34 @@
 </template>
 
 <script>
+import countTo from 'vue-count-to'
+import countUp from 'vue-countup-v2'
 // import Clipboard from 'clipboard'
 import personHeader from './header'
 export default {
     name: 'personal',
     components: {
-        personHeader
+        personHeader,
+        countTo,
+        countUp
     },
     data() {
         return {
           msg: 'personal',
           orderId: '123456789',
           mynum: '',
-          message: '333333333'
+          message: '333333333',
+          startVal: 0,
+            endVal: 2017,
+            options: {
+                useEasing: true,
+                useGrouping: true,
+                separator: ',',
+                decimal: '.',
+                prefix: '',
+                suffix: ''
+            },
+            total: 2020
         }
     },
     methods: {

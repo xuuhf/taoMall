@@ -8414,6 +8414,11 @@ vuedraggable@^2.24.0:
   dependencies:
     sortablejs "^1.10.1"
 
+vuescroll@^4.16.1:
+  version "4.16.1"
+  resolved "https://registry.npm.taobao.org/vuescroll/download/vuescroll-4.16.1.tgz#498099fd0e0a47bf09e1d0cb91fc3533a6804e58"
+  integrity sha1-SYCZ/Q4KR78J4dDLkfw1M6aATlg=
+
 watchpack-chokidar2@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/watchpack-chokidar2/download/watchpack-chokidar2-2.0.0.tgz#9948a1866cbbd6cb824dea13a7ed691f6c8ddff0"

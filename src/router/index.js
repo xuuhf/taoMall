@@ -53,6 +53,10 @@ const router = new Router({
         name: 'myVideo2',
         component: () => import('../pages/personal/myVideo2')
     },{
+        path: '/scrollTest',
+        name: 'scrollTest',
+        component: () => import('../pages/personal/scrollTest')
+    },{
       path: '*',
       redirect: '/home'
     }

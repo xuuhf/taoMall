@@ -17,7 +17,7 @@
                                 :startVal='0' :endVal='2020' :duration='3000'/>
                         </span>
                    </li>
-                   <li class="content-nav-li">
+                   <li class="content-nav-li" @click="$router.push('./scrollTest')">
                         <span>11</span><span>收藏夹</span>
                    </li>
                    <li class="content-nav-li">

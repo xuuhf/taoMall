@@ -16,6 +16,10 @@ import VueClipboard from 'vue-clipboard2'
 import { Dialog} from 'vant'
 import debounce from './assets/js/util'
 import 'vant/lib/index.css';
+
+import vuescroll from 'vuescroll';
+
+Vue.use(vuescroll);
 Vue.use(VueClipboard)
 
 Vue.use(Dialog)
